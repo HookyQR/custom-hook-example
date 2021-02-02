@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useGame } from "./hooks/useGame";
+import Button from "./Button";
+import Output from "./Output";
 
 function App() {
+  const game = useGame();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Button onClick={game.appendLetter} />
+      <Output word={game.word} />
+      <div>{game.end ? "Done" : game.word.length}</div>
     </div>
   );
 }
